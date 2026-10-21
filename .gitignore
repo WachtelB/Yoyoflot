@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.duckdb
+*.duckdb.wal
+*.duckdb.tmp
+.data_manifest.json
+parsed_data/
+parsed_data.zip
+raw/
+results/
+code/**/results/
+code/passenger_graph/node_modules/
+.idea/
+databaze/
+*.parquet

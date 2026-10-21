@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Совместные вылеты · Граф пассажиров</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="logo">✈</span><div><strong>Совместные вылеты</strong><small>Граф пассажиров · Catch The Spies</small></div></div>
+    <div class="totals"><span><b id="total-nodes">—</b> пассажиров</span><span><b id="total-edges">—</b> связей</span><span class="local">Локально на компьютере</span></div>
+  </header>
+  <main>
+    <aside class="controls">
+      <div class="eyebrow">ИССЛЕДОВАНИЕ ГРАФА</div>
+      <h1>Кто летал вместе?</h1>
+      <p class="muted">Связь соединяет два документа, указанных на одном вылете.</p>
+      <label for="search">Найти пассажира</label>
+      <input id="search" type="search" placeholder="Документ или часть ФИО" autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+      <label for="minimum">Минимум совместных вылетов</label>
+      <input id="minimum" type="number" min="1" step="1" value="1">
+      <div class="date-fields"><div><label for="date-from">С даты</label><input id="date-from" type="date"></div><div><label for="date-to">По дату</label><input id="date-to" type="date"></div></div>
+      <label class="check"><input id="hide-isolated" type="checkbox" checked> Скрыть без видимых связей</label>
+      <label class="check"><input id="labels" type="checkbox"> Показывать подписи</label>
+      <button id="apply" class="primary" disabled>Применить фильтры</button>
+      <button id="overview" disabled>Показать весь граф</button>
+      <p id="filter-error" role="alert"></p>
+      <div class="legend"><h3>Как читать граф</h3><p><i class="dot"></i> Точка — документ пассажира</p><p><i class="line"></i> Линия — общий вылет</p><p>Цвета объединяют группы с плотными связями. Они не обозначают подозрительность.</p></div>
+      <details><summary>Правила и полнота данных</summary><div id="audit"></div></details>
+      <div class="footnote">Совпадение записей не подтверждает фактическую посадку. Разные документы одного человека остаются разными узлами.</div>
+    </aside>
+    <section class="canvas-area">
+      <div class="canvas-toolbar"><span id="view-title">Все пассажиры</span><div><button id="zoom-in" title="Приблизить">+</button><button id="zoom-out" title="Отдалить">−</button><button id="reset-camera">По размеру окна</button></div></div>
+      <div id="graph"></div>
+      <div id="loading" role="status"><div class="spinner"></div><strong id="loading-text">Загружаю граф…</strong><span>Большой граф может загружаться несколько секунд</span></div>
+      <div id="status" role="status">Подготовка</div>
+    </section>
+    <aside class="details-panel">
+      <div class="eyebrow">ДЕТАЛИ</div>
+      <div id="details"><h2>Выберите пассажира</h2><p class="muted">Нажмите на точку или найдите человека по документу. Здесь появятся его попутчики.</p><p class="muted">Нажатие на связь покажет общие рейсы, даты и направления.</p></div>
+    </aside>
+  </main>
+  <script src="/app.js" defer></script>
+</body>
+</html>
